@@ -9,11 +9,9 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GroupDaoImpl implements Dao<Group>{
-    private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
-    private static final Map<Integer, Group> groups = new HashMap<>();
+    private static final List<Group> groups = new ArrayList<>();
     public void create(Group group) {
-        group.setId(AUTO_ID.getAndIncrement());
-        groups.put(group.getId(), group);
+        groups.add(group);
     }
 
     public void delete(Group group) {
@@ -21,7 +19,7 @@ public class GroupDaoImpl implements Dao<Group>{
     }
 
     public void edit(Group group) {
-        groups.put(group.getId(), group);
+        groups.add(group.getId(), group);
     }
 
     public Group getById(int id) {
@@ -29,6 +27,6 @@ public class GroupDaoImpl implements Dao<Group>{
     }
 
     public List<Group> getAll() {
-        return new ArrayList<>(groups.values());
+        return groups;
     }
 }

@@ -10,11 +10,9 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class StudentDaoImpl implements Dao<Student> {
-    private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
-    private static final Map<Integer, Student> students = new HashMap<>();
+    private static final List <Student> students = new ArrayList<>();
     public void create(Student student) {
-        student.setId(AUTO_ID.getAndIncrement());
-        students.put(student.getId(), student);
+        students.add(student);
     }
 
     public void delete(Student student) {
@@ -22,7 +20,7 @@ public class StudentDaoImpl implements Dao<Student> {
     }
 
     public void edit(Student student) {
-        students.put(student.getId(), student);
+        students.add(student.getId(), student);
     }
 
     public Student getById(int id) {
@@ -30,6 +28,6 @@ public class StudentDaoImpl implements Dao<Student> {
     }
 
     public List<Student> getAll() {
-        return new ArrayList<>(students.values());
+        return students;
     }
 }

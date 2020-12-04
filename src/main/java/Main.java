@@ -12,21 +12,20 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Group group1 = new Group(1, "gr1", "info");
-        Group group2 = new Group(2, "gr2", "bio");
+        Group group1 = new Group(1, "6107-З", "Факультет Информатики");
+        Group group2 = new Group(2, "5108-Д", "Факультет Биологии");
         GroupDaoImpl groupDao = new GroupDaoImpl();
         groupDao.create(group1);
         groupDao.create(group2);
-        groupDao.delete(group1);
         List<Group> a = groupDao.getAll();
         ObjectMapper mapper = new ObjectMapper();
         File file = new File("group.json");
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         writer.writeValue(file, a);
 
-        Student student = new Student(1, "Viktor", group1, new GregorianCalendar(2010, Calendar.JUNE, 12).getTime());
+        Student student = new Student(1, "Иванов Иван Иванович", group1, new GregorianCalendar(2010, Calendar.JUNE, 12).getTime());
         StudentDaoImpl studentDao = new StudentDaoImpl();
-        studentDao.edit(student);
+        studentDao.create(student);
         List<Student> s = studentDao.getAll();
         File file_s = new File("student.json");
         writer.writeValue(file_s, student);

@@ -1,10 +1,10 @@
 {
   "id" : 1,
-  "name" : "Viktor",
+  "name" : "Иванов Иван Иванович",
   "group" : {
-    "id" : 0,
-    "number" : "gr1",
-    "faculty" : "info"
+    "id" : 1,
+    "number" : "6107-З",
+    "faculty" : "Факультет Информатики"
   },
   "dateOfEnrollment" : 1276286400000
 }
