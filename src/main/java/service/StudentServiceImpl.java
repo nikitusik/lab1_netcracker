@@ -2,11 +2,20 @@ package service;
 
 import dao.StudentDao;
 import model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class StudentServiceImpl implements StudentService{
-    private StudentDao studentDao;
+
+    private final StudentDao studentDao;
+
+    @Autowired
+    public StudentServiceImpl(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
 
     @Override
     public void create(Student student) {
@@ -14,8 +23,8 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void delete(Student student) {
-        studentDao.delete(student);
+    public void delete(int id) {
+        studentDao.delete(id);
     }
 
     @Override

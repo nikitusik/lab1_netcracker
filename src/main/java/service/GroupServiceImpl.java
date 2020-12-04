@@ -2,11 +2,20 @@ package service;
 
 import dao.GroupDao;
 import model.Group;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GroupServiceImpl implements GroupService{
-    private GroupDao groupDao;
+
+    private final GroupDao groupDao;
+
+    @Autowired
+    public GroupServiceImpl(GroupDao groupDao) {
+        this.groupDao = groupDao;
+    }
 
     @Override
     public void create(Group group) {
@@ -14,8 +23,8 @@ public class GroupServiceImpl implements GroupService{
     }
 
     @Override
-    public void delete(Group group) {
-        groupDao.delete(group);
+    public void delete(int id) {
+        groupDao.delete(id);
     }
 
     @Override
