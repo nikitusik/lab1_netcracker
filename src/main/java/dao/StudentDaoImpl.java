@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class StudentDaoImpl implements Dao<Student> {
+public class StudentDaoImpl implements StudentDao {
     private static final List <Student> students = new ArrayList<>();
     public void create(Student student) {
         students.add(student);

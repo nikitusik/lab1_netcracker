@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class GroupDaoImpl implements Dao<Group>{
+public class GroupDaoImpl implements GroupDao{
     private static final List<Group> groups = new ArrayList<>();
     public void create(Group group) {
         groups.add(group);
