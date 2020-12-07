@@ -1,10 +1,11 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Group {
 
-    @JsonProperty("id")
+    @JsonIgnore
     private int id;
 
     @JsonProperty("number")
