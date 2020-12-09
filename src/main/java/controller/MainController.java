@@ -13,7 +13,7 @@ import java.util.List;
 import static controller.AlertConstant.*;
 
 
-public class GroupController {
+public class MainController {
     public Button createGroup;
     public Button deleteGroup;
     public Button findAllGroup;
