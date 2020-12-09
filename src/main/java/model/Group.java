@@ -5,26 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Group {
 
-    @JsonIgnore
-    private int id;
-
     @JsonProperty("number")
     private String number;
 
     @JsonProperty("faculty")
     private String faculty;
 
-    public Group(){}
+    public Group() {
+    }
 
-    public Group(int id, String number, String faculty){
-        this.id = id;
+    public Group(String number, String faculty) {
         this.number = number;
         this.faculty = faculty;
     }
-
-    public int getId() { return id; }
-
-    public void setId(int id) { this.id = id; }
 
     public String getNumber() {
         return number;
@@ -40,5 +33,11 @@ public class Group {
 
     public void setFaculty(String faculty) {
         this.faculty = faculty;
+    }
+
+    @Override
+    public String toString() {
+        return "Номер группы: " + number +
+                ", Факультет: " + faculty;
     }
 }
