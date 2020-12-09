@@ -17,19 +17,20 @@ public class GroupServiceImpl implements GroupService{
         this.groupDao = groupDao;
     }
 
+
     @Override
     public void create(Group group) {
         groupDao.create(group);
     }
 
     @Override
-    public void delete(int id) {
-        groupDao.delete(id);
+    public void delete(String number) {
+        groupDao.delete(number);
     }
 
     @Override
-    public void edit(Group group) {
-        groupDao.edit(group);
+    public void edit(int index, Group group) {
+        groupDao.edit(index, group);
     }
 
     @Override

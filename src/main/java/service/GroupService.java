@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface GroupService {
     void create(Group group);
-    void delete(int id);
-    void edit(Group group);
+    void delete(String number);
+    void edit(int index, Group group);
     Group getById(int id);
     List<Group> getAll();
 }
