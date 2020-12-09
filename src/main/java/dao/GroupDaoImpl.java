@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
-public class GroupDaoImpl implements GroupDao{
+public class GroupDaoImpl implements GroupDao {
     private final ObservableList<Group> groups = FXCollections.observableArrayList();
 
     //private final List<Group> groups = new ArrayList<>();
@@ -21,7 +21,7 @@ public class GroupDaoImpl implements GroupDao{
     @Override
     public void create(Group group) {
         boolean isExist = false;
-        for(Group i: groups){
+        for (Group i : groups) {
             if (i.getNumber().equals(group.getNumber())) {
                 isExist = true;
                 break;

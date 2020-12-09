@@ -1,6 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -19,18 +20,23 @@ public class Student {
     @JsonProperty("dateOfEnrollment")
     private Date dateOfEnrollment;
 
-    public Student(){}
+    public Student() {
+    }
 
-    public Student(int id, String name, Group group, Date dateOfEnrollment){
+    public Student(int id, String name, Group group, Date dateOfEnrollment) {
         this.id = id;
         this.name = name;
         this.group = group;
         this.dateOfEnrollment = dateOfEnrollment;
     }
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -54,5 +60,11 @@ public class Student {
 
     public void setDateOfEnrollment(Date dateOfEnrollment) {
         this.dateOfEnrollment = dateOfEnrollment;
+    }
+
+    public String toString() {
+        return "Имя студента: " + name +
+                ", Группа: " + group +
+                ", Дата зачисления" + dateOfEnrollment;
     }
 }
