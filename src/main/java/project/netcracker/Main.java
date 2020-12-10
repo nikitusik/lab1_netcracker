@@ -1,25 +1,18 @@
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import dao.GroupDaoImpl;
-import dao.StudentDaoImpl;
+package project.netcracker;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Group;
-import model.Student;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.*;
 
 public class Main extends Application {
 
     @Override
     public void start (Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/form/main.fxml"));
         primaryStage.setTitle("Добавление группы");
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();

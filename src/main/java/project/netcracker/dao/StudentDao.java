@@ -1,10 +1,10 @@
-package service;
+package project.netcracker.dao;
 
-import model.Student;
+import project.netcracker.model.Student;
 
 import java.util.List;
 
-public interface StudentService {
+public interface StudentDao {
     void create(Student student);
     void delete(int id);
     void edit(Student student);

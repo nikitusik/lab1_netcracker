@@ -1,7 +1,7 @@
-package service;
+package project.netcracker.service;
 
-import dao.GroupDao;
-import model.Group;
+import project.netcracker.dao.GroupDao;
+import project.netcracker.model.Group;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

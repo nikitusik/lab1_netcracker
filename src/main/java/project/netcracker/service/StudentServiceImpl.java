@@ -1,7 +1,7 @@
-package service;
+package project.netcracker.service;
 
-import dao.StudentDao;
-import model.Student;
+import project.netcracker.dao.StudentDao;
+import project.netcracker.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package controller;
+package project.netcracker.controller;
 
 public class AlertConstant {
     public static final String TITLE_ADD_GROUP = "Добавление группы";

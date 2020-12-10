@@ -1,16 +1,14 @@
-package controller;
+package project.netcracker.controller;
 
-import dao.GroupDao;
-import dao.GroupDaoImpl;
+import project.netcracker.dao.GroupDao;
+import project.netcracker.dao.GroupDaoImpl;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import model.Group;
-import model.Student;
+import project.netcracker.model.Group;
+import project.netcracker.model.Student;
 
-import java.util.List;
-
-import static controller.AlertConstant.*;
+import static project.netcracker.controller.AlertConstant.*;
 
 
 public class MainController {

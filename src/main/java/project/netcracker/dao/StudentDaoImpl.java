@@ -1,16 +1,12 @@
-package dao;
+package project.netcracker.dao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Group;
-import model.Student;
+import project.netcracker.model.Student;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class StudentDaoImpl implements StudentDao {

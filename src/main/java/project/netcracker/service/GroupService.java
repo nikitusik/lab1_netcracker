@@ -1,6 +1,6 @@
-package service;
+package project.netcracker.service;
 
-import model.Group;
+import project.netcracker.model.Group;
 
 import java.util.List;
 

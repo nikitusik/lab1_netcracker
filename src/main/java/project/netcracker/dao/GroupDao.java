@@ -1,6 +1,6 @@
-package dao;
+package project.netcracker.dao;
 
-import model.Group;
+import project.netcracker.model.Group;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

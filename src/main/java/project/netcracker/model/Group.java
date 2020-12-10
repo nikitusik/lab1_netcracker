@@ -1,4 +1,4 @@
-package model;
+package project.netcracker.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

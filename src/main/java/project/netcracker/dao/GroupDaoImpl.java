@@ -1,16 +1,11 @@
-package dao;
+package project.netcracker.dao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Group;
+import project.netcracker.model.Group;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class GroupDaoImpl implements GroupDao {

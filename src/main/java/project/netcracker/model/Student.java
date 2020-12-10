@@ -1,8 +1,8 @@
-package model;
+package project.netcracker.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Calendar;
+
 import java.util.Date;
 
 

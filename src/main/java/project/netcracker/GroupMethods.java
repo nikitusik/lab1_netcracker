@@ -1,4 +1,6 @@
-import model.Group;
+package project.netcracker;
+
+import project.netcracker.model.Group;
 
 public interface GroupMethods {
 
