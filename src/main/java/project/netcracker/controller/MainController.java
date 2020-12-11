@@ -89,6 +89,7 @@ public class MainController {
 
     public void findNumberGroupAction(ActionEvent actionEvent) throws IOException {
         Group group = groupDao.getByNumber(textNumberGroup.getText());
+        listGroup.scrollTo(group);
         listGroup.getSelectionModel().select(group);
     }
 
