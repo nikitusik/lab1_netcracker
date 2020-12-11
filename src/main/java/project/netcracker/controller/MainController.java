@@ -10,6 +10,7 @@ import project.netcracker.model.Group;
 import project.netcracker.model.Student;
 
 import java.io.IOException;
+import java.util.List;
 
 import static project.netcracker.controller.AlertConstant.*;
 
@@ -72,16 +73,11 @@ public class MainController {
     }
 
     public void editGroupAction(ActionEvent actionEvent) throws IOException {
-        int index = 0;
+        int index = listGroup.getSelectionModel().getSelectedIndex();
         Group selectedGroup = listGroup.getSelectionModel().getSelectedItem();
         if (selectedGroup != null) {
             boolean okClicked = main.showGroupEditDialog(selectedGroup);
             if (okClicked) {
-                for (int i = 0; i < groupDao.getAll().size(); i++) {
-                    if (selectedGroup == groupDao.getAll().get(i)) {
-                        index = i;
-                    }
-                }
                 groupDao.edit(index, selectedGroup);
             }
         }
@@ -89,6 +85,7 @@ public class MainController {
 
     public void findNumberGroupAction(ActionEvent actionEvent) throws IOException {
         Group group = groupDao.getByNumber(textNumberGroup.getText());
+        listGroup.scrollTo(group);
         listGroup.getSelectionModel().select(group);
     }
 
