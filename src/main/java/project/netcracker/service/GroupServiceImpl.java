@@ -5,6 +5,7 @@ import project.netcracker.model.Group;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -19,17 +20,17 @@ public class GroupServiceImpl implements GroupService{
 
 
     @Override
-    public void create(Group group) {
+    public void create(Group group) throws IOException {
         groupDao.create(group);
     }
 
     @Override
-    public void delete(String number) {
-        groupDao.delete(number);
+    public void delete(Group group) throws IOException {
+        groupDao.delete(group);
     }
 
     @Override
-    public void edit(int index, Group group) {
+    public void edit(int index, Group group) throws IOException {
         groupDao.edit(index, group);
     }
 
@@ -39,7 +40,7 @@ public class GroupServiceImpl implements GroupService{
     }
 
     @Override
-    public List<Group> getAll() {
+    public List<Group> getAll() throws IOException {
         return groupDao.getAll();
     }
 }
