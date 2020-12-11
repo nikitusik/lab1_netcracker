@@ -1,5 +1,6 @@
 package project.netcracker.controller;
 
+import project.netcracker.Main;
 import project.netcracker.dao.GroupDao;
 import project.netcracker.dao.GroupDaoImpl;
 import javafx.collections.ObservableList;
@@ -7,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import project.netcracker.model.Group;
 import project.netcracker.model.Student;
+
+import java.io.IOException;
 
 import static project.netcracker.controller.AlertConstant.*;
 
@@ -19,8 +22,6 @@ public class MainController {
     public Button findNumberGroup;
 
     public ListView<Group> listGroup;
-    public TextField textNumberGroup;
-    public TextField textFacultyGroup;
 
     public Button createStudent;
     public Button deleteStudent;
@@ -33,76 +34,62 @@ public class MainController {
     public TextField textNameStudent;
     public TextField choiseGroup;
     public DatePicker dateCalendarStudent;
+    public TextField textNumberGroup;
 
     GroupDao groupDao = new GroupDaoImpl();
-    private boolean isExist = false;
+    private Main main;
 
-    public void createGroupAction(ActionEvent actionEvent) {
+    public MainController() throws IOException {
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public void createGroupAction(ActionEvent actionEvent) throws IOException {
 
         Group group = new Group();
-        group.setNumber(textNumberGroup.getText());
-        group.setFaculty(textFacultyGroup.getText());
-
-        for (Group i : groupDao.getAll()) {
-            if (i.getNumber().equals(group.getNumber())) {
-                isExist = true;
-                break;
-            }
-        }
-        if (!isExist) {
+        boolean okClicked = main.showGroupEditDialog(group);
+        if (okClicked) {
             groupDao.create(group);
-            showAlertInformation(TITLE_ADD_GROUP, OK, group.toString());
-        } else
-            showAlertInformation(TITLE_ADD_GROUP, ERROR, GROUP_EXIST);
-        isExist = false;
-    }
-
-    public void deleteGroupAction(ActionEvent actionEvent) {
-
-        for (Group i : groupDao.getAll()) {
-            if (i.getNumber().equals(textNumberGroup.getText())) {
-                isExist = true;
-                break;
-            }
         }
-        if (isExist) {
-            groupDao.delete(textNumberGroup.getText());
-            showAlertInformation(TITLE_DELETE_GROUP, OK, CONTENT_DELETE + textNumberGroup.getText());
-        } else
-            showAlertInformation(TITLE_DELETE_GROUP, ERROR, GROUP_NOT_EXIST);
-        isExist = false;
     }
 
-    public void findAllGroupAction(ActionEvent actionEvent) {
+    public void deleteGroupAction(ActionEvent actionEvent) throws IOException {
+
+        Group selectedGroup = listGroup.getSelectionModel().getSelectedItem();
+        if (selectedGroup != null) {
+            groupDao.delete(selectedGroup);
+        }
+    }
+
+    public void findAllGroupAction(ActionEvent actionEvent) throws IOException {
         listGroup.setItems((ObservableList<Group>) groupDao.getAll());
+        createGroup.setDisable(false);
+        editGroup.setDisable(false);
+        deleteGroup.setDisable(false);
+        findNumberGroup.setDisable(false);
     }
 
-    public void editGroupAction(ActionEvent actionEvent) {
+    public void editGroupAction(ActionEvent actionEvent) throws IOException {
         int index = 0;
-        Group group = groupDao.getByNumber(textNumberGroup.getText());
-        for (int i=0; i < groupDao.getAll().size(); i++){
-            if (group == groupDao.getAll().get(i)){
-                index = i;
+        Group selectedGroup = listGroup.getSelectionModel().getSelectedItem();
+        if (selectedGroup != null) {
+            boolean okClicked = main.showGroupEditDialog(selectedGroup);
+            if (okClicked) {
+                for (int i = 0; i < groupDao.getAll().size(); i++) {
+                    if (selectedGroup == groupDao.getAll().get(i)) {
+                        index = i;
+                    }
+                }
+                groupDao.edit(index, selectedGroup);
             }
         }
-        group.setFaculty(textFacultyGroup.getText());
-        groupDao.edit(index, group);
     }
 
-    public void findNumberGroupAction(ActionEvent actionEvent) {
-
-        for (Group i : groupDao.getAll()) {
-            if (i.getNumber().equals(textNumberGroup.getText())) {
-                isExist = true;
-                break;
-            }
-        }
-        if (!isExist) {
-            showAlertInformation(TITLE_GET_NUMBER, ERROR, GROUP_NOT_EXIST);
-        } else {
-            Group group = groupDao.getByNumber(textNumberGroup.getText());
-            showAlertInformation(TITLE_GET_NUMBER, OK, CONTENT_GET_GROUP + group.toString());
-        }
+    public void findNumberGroupAction(ActionEvent actionEvent) throws IOException {
+        Group group = groupDao.getByNumber(textNumberGroup.getText());
+        listGroup.getSelectionModel().select(group);
     }
 
     public void createStudentAction(ActionEvent actionEvent) {
