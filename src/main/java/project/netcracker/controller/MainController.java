@@ -73,17 +73,11 @@ public class MainController {
     }
 
     public void editGroupAction(ActionEvent actionEvent) throws IOException {
-        int index = 0;
-        List<Group> groupsTemp = groupDao.getAll();
+        int index = listGroup.getSelectionModel().getSelectedIndex();
         Group selectedGroup = listGroup.getSelectionModel().getSelectedItem();
         if (selectedGroup != null) {
             boolean okClicked = main.showGroupEditDialog(selectedGroup);
             if (okClicked) {
-                for (int i = 0; i < groupsTemp.size(); i++) {
-                    if (selectedGroup == groupsTemp.get(i)) {
-                        index = i;
-                    }
-                }
                 groupDao.edit(index, selectedGroup);
             }
         }
