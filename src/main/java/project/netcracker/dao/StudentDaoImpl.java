@@ -36,6 +36,14 @@ public class StudentDaoImpl implements StudentDao {
 
         students.set(student.getId(), student);
     }
+    public Student getStudentByName(String name){
+        for(Student student: students){
+            if(student.getName().equals(name)){
+                return student;
+            }
+        }
+        return null;
+    }
 
     public Student getById(int id) {
         return students.get(id);

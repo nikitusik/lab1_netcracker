@@ -22,7 +22,7 @@ public class GroupDaoImpl implements GroupDao {
 
     private final static String groupFile = "group.json";
 
-    private final ObservableList<Group> groups = FXCollections.observableArrayList();
+    private final  ObservableList<Group> groups = FXCollections.observableArrayList();
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final ObjectReader objectReader = objectMapper.reader().forType(new TypeReference<List<Group>>(){});
@@ -56,8 +56,8 @@ public class GroupDaoImpl implements GroupDao {
         return groups.get(id);
     }
 
-    @Override
-    public Group getByNumber(String number) {
+
+    public  Group getByNumber(String number) {
         for (Group group : groups) {
             if (group.getNumber().equals(number))
                 return group;

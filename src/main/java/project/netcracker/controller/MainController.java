@@ -6,6 +6,8 @@ import project.netcracker.dao.GroupDaoImpl;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import project.netcracker.dao.StudentDao;
+import project.netcracker.dao.StudentDaoImpl;
 import project.netcracker.model.Group;
 import project.netcracker.model.Student;
 
@@ -37,6 +39,7 @@ public class MainController {
     public DatePicker dateCalendarStudent;
     public TextField textNumberGroup;
 
+    StudentDao studentDao = new StudentDaoImpl();
     GroupDao groupDao = new GroupDaoImpl();
     private Main main;
 
@@ -90,18 +93,40 @@ public class MainController {
     }
 
     public void createStudentAction(ActionEvent actionEvent) {
+
+        Student student = new Student();
+        boolean okClicked = main.showStudentEditDialog(student);
+        studentDao.create(student);
+
     }
 
     public void deleteStudentAction(ActionEvent actionEvent) {
+        Student selectedStudent = listStudents.getSelectionModel().getSelectedItem();
+        if(selectedStudent != null){
+            studentDao.delete(selectedStudent.getId());
+        }
     }
 
     public void findAllStudentAction(ActionEvent actionEvent) {
+        listStudents.setItems((ObservableList<Student>) studentDao.getAll());
+        createStudent.setDisable(false);
+        editStudent.setDisable(false);
+        deleteStudent.setDisable(false);
+        findNameStudent.setDisable(false);
     }
 
     public void editStudentAction(ActionEvent actionEvent) {
+        int index = listStudents.getEditingIndex();
+        Student selectedStudent = listStudents.getSelectionModel().getSelectedItem();
+        if(selectedStudent != null){
+            studentDao.edit(selectedStudent);
+        }
     }
 
     public void findNameStudentAction(ActionEvent actionEvent) {
+        Student student = studentDao.getStudentByName(textNameStudent.getText());
+        listStudents.scrollTo(student);
+        listStudents.getSelectionModel().select(student);
     }
 
     private void showAlertInformation(String title, String result, String content) {
