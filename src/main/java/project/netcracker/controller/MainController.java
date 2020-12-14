@@ -33,10 +33,7 @@ public class MainController {
     public Button findNameStudent;
 
     public ListView<Student> listStudents;
-    public TextField textIdStudent;
     public TextField textNameStudent;
-    public TextField choiseGroup;
-    public DatePicker dateCalendarStudent;
     public TextField textNumberGroup;
 
     StudentDao studentDao = new StudentDaoImpl();
@@ -92,22 +89,24 @@ public class MainController {
         listGroup.getSelectionModel().select(group);
     }
 
-    public void createStudentAction(ActionEvent actionEvent) {
+    public void createStudentAction(ActionEvent actionEvent) throws IOException {
 
         Student student = new Student();
-        boolean okClicked = main.showStudentEditDialog(student);
-        studentDao.create(student);
+        boolean okClicked = main.showStudentEditDialog(student, groupDao);
+        if (okClicked){
+            studentDao.create(student);
+        }
 
     }
 
-    public void deleteStudentAction(ActionEvent actionEvent) {
+    public void deleteStudentAction(ActionEvent actionEvent) throws IOException {
         Student selectedStudent = listStudents.getSelectionModel().getSelectedItem();
         if(selectedStudent != null){
             studentDao.delete(selectedStudent.getId());
         }
     }
 
-    public void findAllStudentAction(ActionEvent actionEvent) {
+    public void findAllStudentAction(ActionEvent actionEvent) throws IOException {
         listStudents.setItems((ObservableList<Student>) studentDao.getAll());
         createStudent.setDisable(false);
         editStudent.setDisable(false);
@@ -115,11 +114,13 @@ public class MainController {
         findNameStudent.setDisable(false);
     }
 
-    public void editStudentAction(ActionEvent actionEvent) {
-        int index = listStudents.getEditingIndex();
+    public void editStudentAction(ActionEvent actionEvent) throws IOException {
         Student selectedStudent = listStudents.getSelectionModel().getSelectedItem();
         if(selectedStudent != null){
-            studentDao.edit(selectedStudent);
+            boolean okClicked = main.showStudentEditDialog(selectedStudent, groupDao);
+            if (okClicked){
+                studentDao.edit(selectedStudent);
+            }
         }
     }
 
