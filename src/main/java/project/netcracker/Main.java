@@ -1,6 +1,7 @@
 package project.netcracker;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import project.netcracker.controller.CreateEditGroupController;
 import project.netcracker.controller.CreateEditStudentController;
+import project.netcracker.controller.ListStudentsForGroupController;
 import project.netcracker.controller.MainController;
 import project.netcracker.dao.GroupDao;
 import project.netcracker.model.Group;
@@ -19,8 +21,9 @@ import java.io.IOException;
 public class Main extends Application {
 
     private Stage primaryStage;
+
     @Override
-    public void start (Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Студенты и группы");
         initRoot();
@@ -37,7 +40,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public boolean showGroupEditDialog(Group group){
+    public boolean showGroupEditDialog(Group group) {
         try {
             // Загружаем fxml-файл и создаём новую сцену
             // для всплывающего диалогового окна.
@@ -67,7 +70,7 @@ public class Main extends Application {
         }
     }
 
-    public boolean showStudentEditDialog(Student student, GroupDao groupDao){
+    public boolean showStudentEditDialog(Student student, GroupDao groupDao) {
         try {
             // Загружаем fxml-файл и создаём новую сцену
             // для всплывающего диалогового окна.
@@ -94,6 +97,28 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public void showListStudentForGroup(ObservableList<Student> students) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/form/listStudentsForGroup.fxml"));
+            AnchorPane page = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            ListStudentsForGroupController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setStudents(students);
+
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
