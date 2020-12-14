@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import project.netcracker.controller.CreateEditGroupController;
 import project.netcracker.controller.CreateEditStudentController;
 import project.netcracker.controller.MainController;
+import project.netcracker.dao.GroupDao;
 import project.netcracker.model.Group;
 import project.netcracker.model.Student;
 
@@ -55,7 +56,6 @@ public class Main extends Application {
             CreateEditGroupController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setGroup(group);
-            //controller.setPerson(person);
 
             // Отображаем диалоговое окно и ждём, пока пользователь его не закроет
             dialogStage.showAndWait();
@@ -67,7 +67,7 @@ public class Main extends Application {
         }
     }
 
-    public boolean showStudentEditDialog(Student student){
+    public boolean showStudentEditDialog(Student student, GroupDao groupDao){
         try {
             // Загружаем fxml-файл и создаём новую сцену
             // для всплывающего диалогового окна.
@@ -85,8 +85,7 @@ public class Main extends Application {
             // Передаём группу в контроллер.
             CreateEditStudentController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setStudent(student);
-            //controller.setPerson(person);
+            controller.setStudent(student, groupDao);
 
             // Отображаем диалоговое окно и ждём, пока пользователь его не закроет
             dialogStage.showAndWait();
