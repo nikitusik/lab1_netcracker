@@ -7,4 +7,10 @@
 }, {
   "number" : "657",
   "faculty" : "it"
+}, {
+  "number" : "112",
+  "faculty" : "med"
+}, {
+  "number" : "131",
+  "faculty" : "test"
 } ]

@@ -1,25 +1,33 @@
 [ {
   "id" : 0,
-  "name" : "ivan ivanov",
+  "name" : "vitia",
   "group" : {
     "number" : "123",
     "faculty" : "bio"
   },
-  "dateOfEnrollment" : [ 2017, 8, 31 ]
+  "dateOfEnrollment" : [ 2020, 12, 9 ]
 }, {
   "id" : 1,
-  "name" : "misha",
+  "name" : "nasta",
   "group" : {
-    "number" : "657",
+    "number" : "324",
     "faculty" : "it"
   },
-  "dateOfEnrollment" : [ 2020, 12, 30 ]
+  "dateOfEnrollment" : [ 2020, 12, 15 ]
 }, {
   "id" : 2,
-  "name" : "alina",
+  "name" : "pasha",
   "group" : {
-    "number" : "657",
-    "faculty" : "it"
+    "number" : "131",
+    "faculty" : "test"
+  },
+  "dateOfEnrollment" : [ 2020, 12, 9 ]
+}, {
+  "id" : 3,
+  "name" : "vito",
+  "group" : {
+    "number" : "131",
+    "faculty" : "test"
   },
   "dateOfEnrollment" : [ 2020, 12, 15 ]
 } ]
