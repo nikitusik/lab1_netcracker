@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="506.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Text layoutX="180.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Создание нового студента" />
-      <TextField layoutX="179.0" layoutY="62.0" promptText="имя студента" />
-      <TextField layoutX="179.0" layoutY="114.0" promptText="номер группы" />
-      <Button layoutX="178.0" layoutY="244.0" mnemonicParsing="false" text="Создать" />
-      <Button layoutX="268.0" layoutY="244.0" mnemonicParsing="false" text="Отмена" />
-      <DatePicker layoutX="180.0" layoutY="169.0" prefHeight="26.0" prefWidth="149.0" promptText="дата зачисления" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="506.0" xmlns="http://javafx.com/javafx/8.0.261" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.netcracker.controller.CreateEditStudentController">
+    <children>
+        <Text layoutX="180.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Создание нового студента" />
+        <TextField fx:id="textName" layoutX="179.0" layoutY="62.0" promptText="имя студента" />
+        <TextField fx:id="textGroupNumber" layoutX="179.0" layoutY="114.0" promptText="номер группы" />
+        <Button fx:id="create" layoutX="178.0" layoutY="244.0" mnemonicParsing="false" onAction="#createAction" text="Создать" />
+        <Button fx:id="cancel" layoutX="268.0" layoutY="244.0" mnemonicParsing="false" onAction="#cancelAction" text="Отмена" />
+        <DatePicker fx:id="textDateOfEnrollment" layoutX="180.0" layoutY="169.0" prefHeight="26.0" prefWidth="149.0" promptText="дата зачисления" />
+    </children>
 </AnchorPane>
