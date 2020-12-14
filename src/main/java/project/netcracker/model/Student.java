@@ -3,10 +3,12 @@ package project.netcracker.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
 public class Student {
+
 
     @JsonProperty("id")
     private int id;
@@ -18,13 +20,12 @@ public class Student {
     private Group group;
 
     @JsonProperty("dateOfEnrollment")
-    private Date dateOfEnrollment;
+    private LocalDate dateOfEnrollment;
 
     public Student() {
     }
 
-    public Student(int id, String name, Group group, Date dateOfEnrollment) {
-        this.id = id;
+    public Student(String name, Group group, LocalDate dateOfEnrollment) {
         this.name = name;
         this.group = group;
         this.dateOfEnrollment = dateOfEnrollment;
@@ -54,17 +55,17 @@ public class Student {
         this.group = group;
     }
 
-    public Date getDateOfEnrollment() {
+    public LocalDate getDateOfEnrollment() {
         return dateOfEnrollment;
     }
 
-    public void setDateOfEnrollment(Date dateOfEnrollment) {
+    public void setDateOfEnrollment(LocalDate dateOfEnrollment) {
         this.dateOfEnrollment = dateOfEnrollment;
     }
 
     public String toString() {
         return "Имя студента: " + name +
-                ", Группа: " + group +
-                ", Дата зачисления" + dateOfEnrollment;
+                ", Группа: " + group.getNumber() +
+                ", Дата зачисления: " + dateOfEnrollment;
     }
 }

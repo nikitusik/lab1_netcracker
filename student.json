@@ -1,9 +1,33 @@
-{
-  "id" : 1,
-  "name" : "Иванов Иван Иванович",
+[ {
+  "id" : 0,
+  "name" : "vitia",
   "group" : {
-    "number" : "6107-З",
-    "faculty" : "Факультет Информатики"
+    "number" : "123",
+    "faculty" : "bio"
   },
-  "dateOfEnrollment" : 1276286400000
-}
+  "dateOfEnrollment" : [ 2020, 12, 9 ]
+}, {
+  "id" : 1,
+  "name" : "nasta",
+  "group" : {
+    "number" : "324",
+    "faculty" : "it"
+  },
+  "dateOfEnrollment" : [ 2020, 12, 15 ]
+}, {
+  "id" : 2,
+  "name" : "pasha",
+  "group" : {
+    "number" : "131",
+    "faculty" : "test"
+  },
+  "dateOfEnrollment" : [ 2020, 12, 9 ]
+}, {
+  "id" : 3,
+  "name" : "vito",
+  "group" : {
+    "number" : "131",
+    "faculty" : "test"
+  },
+  "dateOfEnrollment" : [ 2020, 12, 15 ]
+} ]

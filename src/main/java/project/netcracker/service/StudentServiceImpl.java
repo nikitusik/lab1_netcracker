@@ -5,6 +5,7 @@ import project.netcracker.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -18,17 +19,17 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void create(Student student) {
+    public void create(Student student) throws IOException {
         studentDao.create(student);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws IOException {
         studentDao.delete(id);
     }
 
     @Override
-    public void edit(Student student) {
+    public void edit(Student student) throws IOException {
         studentDao.edit(student);
     }
 
@@ -38,7 +39,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public List<Student> getAll() {
+    public List<Student> getAll() throws IOException {
         return studentDao.getAll();
     }
 }

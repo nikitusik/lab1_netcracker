@@ -1,10 +1,16 @@
 [ {
-  "number" : "5108-Д",
-  "faculty" : "Факультет Биологии"
+  "number" : "123",
+  "faculty" : "bio"
 }, {
-  "number" : "5133",
-  "faculty" : "Магии"
+  "number" : "324",
+  "faculty" : "it"
 }, {
-  "number" : "4351",
-  "faculty" : "Информатика"
+  "number" : "657",
+  "faculty" : "it"
+}, {
+  "number" : "112",
+  "faculty" : "med"
+}, {
+  "number" : "131",
+  "faculty" : "test"
 } ]
